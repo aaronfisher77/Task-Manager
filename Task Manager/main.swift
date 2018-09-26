@@ -11,8 +11,7 @@ import Foundation
 print("Task Manager:")
 print("")
 
-let taskManager = Menu()
-
+let taskManager = Menu() // Initilizer
 
 taskManager.go()
 

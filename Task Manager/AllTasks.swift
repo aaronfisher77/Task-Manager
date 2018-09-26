@@ -12,11 +12,7 @@ import Foundation
 
 class AllTasks  {
     
-    var taskArray = [Task(yourTask: "Complete this code"), Task(yourTask: "Get a steady job"), Task(yourTask: "Play Cards")] // List of tasks
-    
-    
-    
-    
+    var taskArray = [Task(yourTask: "Complete this code"), Task(yourTask: "Get a steady job"), Task(yourTask: "Play Cards")] // List of task
     
     func addTask() { // Adding a task
         print("Please enter the Task you would like to add?")
@@ -28,11 +24,6 @@ class AllTasks  {
         let theNewTask = Task(yourTask: newTask!)
         taskArray.append(theNewTask)
     }
-    
-    
-    
-    
-    
     
     func deleteTask() {// Deletes a task
         for index in 0..<taskArray.count{
@@ -48,85 +39,71 @@ class AllTasks  {
             userInput = Int(readLine()!)
         }
         
-        taskArray.remove(at: userInput!)
+        taskArray.remove(at: userInput!) // removes the task
     }
     
-    
-    
-    
-
-    func listAllTasks() {
+    func listAllTasks() { // lists all tasks
         for task in taskArray {
                 print(task.yourTask)
         }
         print("\n\n")
     }
-
-    
-    
-    
     
     func listCompletedTasks() {
-        var Complete = 0
+        var complete = 0 // Numbers the tasks
         for task in taskArray {
-            if task.completed {
+            if task.completed { // For every task that is complete it will print it
                 print(task.yourTask)
-                Complete += 1
+                complete += 1
             }
         }
-        if Complete == 0 {
+        if complete == 0 { // checks to see if the tasks are complete or not
             print("There are no completed tasks.")
         }
         print("\n\n")
     }
     
-    
-    
     func listIncompletedTasks() {
         var incomplete = 0
         for task in taskArray {
-            if !task.completed {
+            if !task.completed { // for every task that is not complete it will print it
                 print(task.yourTask)
                 incomplete += 1
             }
         }
-        if incomplete == 0 {
+        if incomplete == 0 { // checks to see if the tasks are complete or not
             print("There are no Incompleted tasks.")
         }
         print("\n\n")
     }
     
-
-    
-    
-    
-    func MarkTaskComplete() { // Marks the task complete
+    func markTaskComplete() { // Marks the task complete
         var completed = 0
         if completed == taskArray.count {
             print("There are no tasks to complete.")
         }else{
             var counter = 1 // allows me to be able to put a numberr before each task
             print("What task would you like to mark complete?")
-            for task in taskArray { // For every task that is in the array it will print
+            for task in taskArray { // For every incomplete task that is in the array it will print
                 if !task.completed { // if the task is not complete
                     print("\(counter): \(task.yourTask)") // prints out "1. (your task)"
                     counter += 1
                 }
 
             }
-            print("Please enter the number corresponding with the task you would  like to mark Complete")
+            print("Please enter the number corresponding with the task you would like to mark Complete")
             var taskComplete = Int(readLine()!)
             while taskComplete == nil { // Checks to see if the answer will work
                 print("That is not a valid answer")
                 taskComplete = Int(readLine()!) // Anwer needs to equal an integer
             }
-            if  taskComplete! <= 0 || taskComplete! > taskArray.count + 1  { // this is checking to see if the number entered is an option in the Array
+            if  taskComplete! <= 0 || taskComplete! > taskArray.count  { // this is checking to see if the number entered is an option in the Array
                     print("This is not a valid integer")
                     taskComplete = Int(readLine()!)
             }
 
             if taskArray[taskComplete!].completed == false { // This checks to see if Inc the task is not completed and tells you the task is completed if it is completed
-                taskArray[taskComplete!].completed = true
+                taskArray[taskComplete!].completed = true // this will mark the task complet
                 completed += 1
             }else{
                 print("This task is already marked 'Complete'")
@@ -135,20 +112,15 @@ class AllTasks  {
         print("\n\n")
     }
     
-
-    
-    
-    
-    
-    func MarkTaskIncomplete() {
-        var Uncompleted = 0
-        if Uncompleted == taskArray.count {
+    func markTaskIncomplete() { // Marks the task Incomplete
+        var uncompleted = 0
+        if uncompleted == taskArray.count {
             print("There are no tasks that are complete.")
         }else{
             var counter = 1
             print("What task would you like to mark Incomplete?")
-            for task in taskArray {
-                if task.completed {
+            for task in taskArray { // For every  completed task that is in the array it will print
+                if task.completed {// if the task is complete
                     print("\(counter): \(task.yourTask)")
                     counter += 1
                 }
@@ -164,8 +136,8 @@ class AllTasks  {
                 }
             }
             if taskArray[taskIncomplete!].completed == true { // This checks to see if the task is  completetask and tells you the task is not completed if it is not completed
-                taskArray[taskIncomplete!].completed = false
-                Uncompleted += 1
+                taskArray[taskIncomplete!].completed = false // this will set the task to incomplete
+                uncompleted += 1
             }else{
                 print("This task is already marked 'Incomplete'")
             }
@@ -173,32 +145,28 @@ class AllTasks  {
         print("\n\n")
     }
     
-    
-    
-    
-    
-    func yesNoInput() -> String{
+    func yesNoInput() -> String{ // allows me to make a quick yes or no answer question
         let userInput = readLine()!
         if userInput.uppercased() == "YES"{
-            return "yes"
+            return "yes" // returns the string yes
         }else if userInput.uppercased() == "NO"{
-            return "no"
-        }else{
+            return "no"// returns the string no
+        }else{ // checks to see if its a yes or no question
             print("Please enter either yes or no.")
             return yesNoInput()
         }
     }
     
-    func returnToMenu() {
+    func returnToMenu() { // takes a yes or no imput and decides what to do from there.
         let answer = yesNoInput()
         if answer == "no"{
            exit(0)
         }
         print("")
     }
-    
-    
-    
-    
 }
+
+
+
+
 

@@ -39,7 +39,7 @@ class Menu {
             userInput = Int(readLine()!)
         }
         
-        switch userInput { // tells the computer what to do and when/if to do it
+        switch userInput { // Tells the computer what to do and when/if to do it
         case 1:
             print("Listing All Tasks...")
             print("")
@@ -67,14 +67,14 @@ class Menu {
         case 4:
             print("")
             sleep(1)
-            allTaskFunc.MarkTaskIncomplete()
+            allTaskFunc.markTaskIncomplete()
             print("Would you like to return to the menu?")
             allTaskFunc.returnToMenu()
             go()
         case 5:
             print("")
             sleep(1)
-            allTaskFunc.MarkTaskComplete()
+            allTaskFunc.markTaskComplete()
             print("Would you like to return to the menu?")
             allTaskFunc.returnToMenu()
             go()
